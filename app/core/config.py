@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Auth Service"
     API_V1_STR: str = "/api/v1"
     DEBUG: bool = False
-    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:5173"]
+    BACKEND_CORS_ORIGINS: List[str] = ["http://185.135.80.107:5173"]
     
     # Настройки базы данных
     POSTGRES_SERVER: str = "postgres"
