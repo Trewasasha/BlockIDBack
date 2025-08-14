@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Auth Service"
     API_V1_STR: str = "/api/v1"
     DEBUG: bool = False
-    BACKEND_CORS_ORIGINS: List[str] = ["http://185.135.80.107:5173"]
+    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:5173"]
     
     # Настройки базы данных
     POSTGRES_SERVER: str = "postgres"
@@ -21,9 +21,13 @@ class Settings(BaseSettings):
     
     # Настройки JWT
     SECRET_KEY: str = Field(default="your-secret-key-here")
+    REFRESH_SECRET_KEY: str = Field(default="your-refresh-secret-key-here")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+    RESET_PASSWORD_TOKEN_EXPIRE_MINUTES: int = 15
     JWT_ALGORITHM: str = "HS256"
+    
+    USE_ASYNC_MIGRATIONS: bool = False
     
     # OAuth провайдеры
     VK_CLIENT_ID: Optional[str] = None
@@ -33,9 +37,6 @@ class Settings(BaseSettings):
     GOOGLE_CLIENT_ID: Optional[str] = None
     GOOGLE_CLIENT_SECRET: Optional[str] = None
     GOOGLE_REDIRECT_URI: Optional[str] = "http://localhost:8000/api/v1/auth/google/callback"
-
-    # Настройки миграций
-    USE_ASYNC_MIGRATIONS: bool = False
 
     class Config:
         env_file = ".env"

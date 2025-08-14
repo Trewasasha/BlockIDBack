@@ -1,12 +1,39 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
+from fastapi_cache.decorator import cache
 import redis.asyncio as redis
+from contextlib import asynccontextmanager
+from typing import AsyncGenerator
+import logging
 
 from app.core.config import settings
 from app.api.v1.endpoints import auth, users
+from app.database import get_db
+from sqlalchemy.ext.asyncio import AsyncSession
 
+# Настройка логгера
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator:
+    """Управление жизненным циклом приложения"""
+    # Инициализация Redis при старте
+    try:
+        redis_client = redis.from_url(str(settings.REDIS_URI))
+        FastAPICache.init(RedisBackend(redis_client), prefix="fastapi-cache")
+        logger.info("Redis cache initialized successfully")
+    except Exception as e:
+        logger.error(f"Failed to initialize Redis: {str(e)}")
+        raise
+    
+    yield
+    
+    # Очистка при завершении
+    await FastAPICache.clear()
+    logger.info("Application shutdown complete")
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -14,17 +41,31 @@ app = FastAPI(
     version="1.0.0",
     docs_url="/docs",
     redoc_url=None,
-    swagger_ui_parameters={"defaultModelsExpandDepth": -1} 
+    swagger_ui_parameters={
+        "defaultModelsExpandDepth": -1,
+        "persistAuthorization": True
+    },
+    lifespan=lifespan
 )
 
 @app.get("/health", include_in_schema=False)
-async def health_check():
-    return {"status": "ok"}
-
-@app.on_event("startup")
-async def startup():
-    redis_client = redis.from_url(str(settings.REDIS_URI))
-    FastAPICache.init(RedisBackend(redis_client), prefix="fastapi-cache")
+@cache(expire=10)
+async def health_check(db: AsyncSession = Depends(get_db)):
+    """Проверка здоровья сервиса (включая БД)"""
+    try:
+        # Проверка подключения к БД
+        await db.execute("SELECT 1")
+        return {
+            "status": "ok",
+            "database": "connected",
+            "redis": "connected" if FastAPICache.get_backend() else "disconnected"
+        }
+    except Exception as e:
+        logger.error(f"Health check failed: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Service unavailable: {str(e)}"
+        )
 
 # Настройка CORS
 app.add_middleware(
@@ -33,6 +74,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["Content-Disposition"]
 )
 
 # Включение роутеров
@@ -45,8 +87,9 @@ def custom_openapi():
         return app.openapi_schema
     
     from fastapi.openapi.utils import get_openapi
+    
     openapi_schema = get_openapi(
-        title=app.title,
+        title=app.title + " | " + ("DEV" if settings.DEBUG else "PROD"),
         version=app.version,
         description=app.description,
         routes=app.routes,
@@ -60,12 +103,29 @@ def custom_openapi():
                 "password": {
                     "tokenUrl": f"{settings.API_V1_STR}/auth/login",
                     "scopes": {}
+                },
+                "refreshToken": {
+                    "tokenUrl": f"{settings.API_V1_STR}/auth/refresh",
+                    "scopes": {}
                 }
             }
         }
     }
     
+    # Добавляем глобальную безопасность
+    openapi_schema["security"] = [{"OAuth2PasswordBearer": []}]
+    
     app.openapi_schema = openapi_schema
     return app.openapi_schema
 
 app.openapi = custom_openapi
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=settings.DEBUG,
+        log_level="info" if settings.DEBUG else "warning"
+    )
