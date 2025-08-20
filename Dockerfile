@@ -1,5 +1,8 @@
 FROM python:3.10-slim
 
+ENV PYTHONPATH="/app"
+
+COPY . /app
 WORKDIR /app
 
 # Установка системных зависимостей

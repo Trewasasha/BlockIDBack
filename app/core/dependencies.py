@@ -13,6 +13,11 @@ from app.schema.user import UserInDB
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{settings.API_V1_STR}/auth/login")
 
+# Вынесите кешированную функцию отдельно
+@cache(expire=300)  # Кешируем на 5 минут
+async def get_cached_user(email: str, db: AsyncSession):
+    return await get_user_by_email(db, email=email)
+
 async def get_current_user(
     token: str = Depends(oauth2_scheme),
     db: AsyncSession = Depends(get_db)
@@ -26,10 +31,6 @@ async def get_current_user(
         headers={"WWW-Authenticate": "Bearer"},
     )
     
-    @cache(expire=300)  # Кешируем на 5 минут
-    async def get_cached_user(email: str):
-        return await get_user_by_email(db, email=email)
-    
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
         email: str = payload.get("sub")
@@ -39,9 +40,12 @@ async def get_current_user(
     except JWTError:
         raise credentials_exception
     
-    user = await get_cached_user(token_data.email)
+    # Используем кешированную функцию
+    user = await get_cached_user(token_data.email, db)
     if user is None:
         raise credentials_exception
+    
+    # Убедитесь, что возвращается объект UserInDB, а не словарь
     return user
 
 async def get_current_active_user(

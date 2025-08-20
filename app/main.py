@@ -9,7 +9,7 @@ from typing import AsyncGenerator
 import logging
 
 from app.core.config import settings
-from app.api.v1.endpoints import auth, users
+from app.api.v1.endpoints import auth, users, cart, products
 from app.database import get_db
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -28,6 +28,17 @@ async def lifespan(app: FastAPI) -> AsyncGenerator:
     except Exception as e:
         logger.error(f"Failed to initialize Redis: {str(e)}")
         raise
+    
+    # Инициализация FileStorage (создание bucket если нужно)
+    try:
+        # Импортируем и инициализируем FileStorage
+        from app.services.file_storage import file_storage
+        # Просто обращение к file_storage вызовет __init__ который создаст bucket
+        logger.info("FileStorage initialized successfully")
+    except Exception as e:
+        logger.error(f"Failed to initialize FileStorage: {str(e)}")
+        # Не прерываем запуск, т.к. приложение может работать без MinIO
+        # Но логируем ошибку для диагностики
     
     yield
     
@@ -80,6 +91,8 @@ app.add_middleware(
 # Включение роутеров
 app.include_router(auth.router, prefix=settings.API_V1_STR)
 app.include_router(users.router, prefix=settings.API_V1_STR)
+app.include_router(products.router, prefix=settings.API_V1_STR)
+app.include_router(cart.router, prefix=settings.API_V1_STR)
 
 # Кастомная OpenAPI схема для Swagger
 def custom_openapi():

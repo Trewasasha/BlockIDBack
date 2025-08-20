@@ -11,7 +11,9 @@ sys.path.append(os.getcwd())
 
 from app.core.config import settings
 from app.database import Base
-from app.models.user import User  # Явно импортируем модель
+from app.models.user import User 
+from app.models.product import Product
+from app.models.cart import CartItem
 
 config = context.config
 fileConfig(config.config_file_name)

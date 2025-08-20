@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   app:
     build: .
@@ -10,15 +12,22 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+      minio:
+        condition: service_healthy
     environment:
       - POSTGRES_SERVER=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=auth_service
       - REDIS_URI=redis://redis:6379/0
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+      - MINIO_BUCKET_NAME=kitchen-blocks
     command: >
       sh -c "sleep 5 && 
       alembic upgrade head && 
+      python app/db/init_db.py &&
       uvicorn app.main:app --host 0.0.0.0 --port 8000"
 
   postgres:
@@ -47,6 +56,25 @@ services:
     volumes:
       - redis_data:/data
 
+  minio:
+    image: minio/minio
+    hostname: minio
+    ports:
+      - "9000:9000"  
+      - "9001:9001" 
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
 volumes:
   postgres_data:
   redis_data:
+  minio_data:
