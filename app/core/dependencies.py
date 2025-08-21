@@ -9,14 +9,18 @@ from app.core.config import settings
 from app.crud.user import get_user_by_email
 from app.database import get_db
 from app.schema.token import TokenData
-from app.schema.user import UserInDB
+from app.schema.user import UserInDB, UserRole
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{settings.API_V1_STR}/auth/login")
 
-# Вынесите кешированную функцию отдельно
-@cache(expire=300)  # Кешируем на 5 минут
-async def get_cached_user(email: str, db: AsyncSession):
-    return await get_user_by_email(db, email=email)
+# Кэшированная функция, которая возвращает данные пользователя в виде словаря
+@cache(expire=300)
+async def get_cached_user_data(email: str, db: AsyncSession) -> Optional[dict]:
+    """Получает данные пользователя и кэширует их в виде словаря"""
+    user = await get_user_by_email(db, email=email)
+    if user:
+        return user.to_dict()  # Используем метод to_dict для сериализации
+    return None
 
 async def get_current_user(
     token: str = Depends(oauth2_scheme),
@@ -40,20 +44,44 @@ async def get_current_user(
     except JWTError:
         raise credentials_exception
     
-    # Используем кешированную функцию
-    user = await get_cached_user(token_data.email, db)
-    if user is None:
-        raise credentials_exception
+    # Пытаемся получить данные из кэша
+    user_data = await get_cached_user_data(token_data.email, db)
     
-    # Убедитесь, что возвращается объект UserInDB, а не словарь
-    return user
+    if user_data is not None:
+        try:
+            # Преобразуем словарь обратно в UserInDB
+            return UserInDB.from_dict(user_data)
+        except Exception as e:
+            # Если преобразование не удалось, получаем из базы
+            user = await get_user_by_email(db, token_data.email)
+            if user is None:
+                raise credentials_exception
+            return user
+    else:
+        # Если нет в кэше, получаем из базы
+        user = await get_user_by_email(db, token_data.email)
+        if user is None:
+            raise credentials_exception
+        return user
 
 async def get_current_active_user(
     current_user: UserInDB = Depends(get_current_user)
 ) -> UserInDB:
+    """Проверяет, что пользователь активен"""
     if not current_user.is_active:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Inactive user"
+        )
+    return current_user
+
+async def get_current_admin_user(
+    current_user: UserInDB = Depends(get_current_active_user)
+) -> UserInDB:
+    """Проверяет, что пользователь имеет роль ADMIN"""
+    if current_user.role != UserRole.ADMIN:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin privileges required"
         )
     return current_user

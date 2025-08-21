@@ -5,11 +5,14 @@ from datetime import datetime
 
 class ProductBase(BaseModel):
     name: str = Field(..., min_length=1, max_length=100)
-    description: Optional[str] = Field(None, max_length=500)
+    description: Optional[str] = Field(None, max_length=1000)
     price: float = Field(..., gt=0)
     stock: int = Field(0, ge=0)
-    category: str
-    image_object_name: Optional[str] = None  # Добавьте это поле
+    category: str = Field(..., max_length=50)
+    sku: Optional[str] = Field(None, max_length=50)  # Артикул
+    weight: float = Field(0.0, ge=0)  # Вес в кг
+    dimensions: Optional[str] = Field(None, max_length=50)  # Размеры
+    image_object_name: Optional[str] = None
     image_url: Optional[str] = None
 
 class ProductCreate(ProductBase):
@@ -21,8 +24,10 @@ class ProductUpdate(BaseModel):
     price: Optional[float] = None
     stock: Optional[int] = None
     category: Optional[str] = None
-    image_object_name: Optional[str] = None
-    image_url: Optional[str] = None
+    sku: Optional[str] = None
+    weight: Optional[float] = None
+    dimensions: Optional[str] = None
+    is_active: Optional[bool] = None
 
 class ProductInDB(ProductBase):
     id: UUID  

@@ -11,7 +11,10 @@ import logging
 from app.core.config import settings
 from app.api.v1.endpoints import auth, users, cart, products
 from app.database import get_db
+from app.logging_config import setup_logging
 from sqlalchemy.ext.asyncio import AsyncSession
+
+setup_logging()
 
 # Настройка логгера
 logging.basicConfig(level=logging.INFO)

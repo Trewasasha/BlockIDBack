@@ -15,6 +15,9 @@ from app.models.user import User
 from app.models.product import Product
 from app.models.cart import CartItem
 
+# Импортируем enum для корректной работы миграций
+from app.models.user import UserRole
+
 config = context.config
 fileConfig(config.config_file_name)
 
