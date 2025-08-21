@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Auth Service"
     API_V1_STR: str = "/api/v1"
     DEBUG: bool = False
-    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:5173"]
+    BACKEND_CORS_ORIGINS: List[str] = ["http://185.135.80.107:5173"]
     
     # Настройки базы данных
     POSTGRES_SERVER: str = "postgres"
@@ -20,8 +20,8 @@ class Settings(BaseSettings):
     REDIS_URI: RedisDsn = "redis://redis:6379/0"
     
     # Настройки JWT
-    SECRET_KEY: str = Field(default="your-secret-key-here")
-    REFRESH_SECRET_KEY: str = Field(default="your-refresh-secret-key-here")
+    SECRET_KEY: str = Field(default="7f0759f478c5be878db11d28d31b9a8fa14de0578139c9711ebf00ad76de98fb")
+    REFRESH_SECRET_KEY: str = Field(default="7f0759f478c5be878db11d28d31b9a8fa14de0578139c9711ebf00ad76de98fb")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     RESET_PASSWORD_TOKEN_EXPIRE_MINUTES: int = 15
@@ -32,18 +32,18 @@ class Settings(BaseSettings):
     # OAuth провайдеры
     VK_CLIENT_ID: Optional[str] = None
     VK_CLIENT_SECRET: Optional[str] = None
-    VK_REDIRECT_URI: Optional[str] = "http://localhost:8000/api/v1/auth/vk/callback"
+    VK_REDIRECT_URI: Optional[str] = "http://185.135.80.107:8000/api/v1/auth/vk/callback"
     
     GOOGLE_CLIENT_ID: Optional[str] = None
     GOOGLE_CLIENT_SECRET: Optional[str] = None
-    GOOGLE_REDIRECT_URI: Optional[str] = "http://localhost:8000/api/v1/auth/google/callback"
+    GOOGLE_REDIRECT_URI: Optional[str] = "http://185.135.80.107:8000/api/v1/auth/google/callback"
 
     # MinIO 
     MINIO_ENDPOINT: str
     MINIO_ACCESS_KEY: str
     MINIO_SECRET_KEY: str
     MINIO_BUCKET_NAME: str = "kitchen-blocks"
-    MINIO_PUBLIC_URL: str = "http://localhost:9000"
+    MINIO_PUBLIC_URL: str = "http://185.135.80.107:9000"
     MINIO_SECURE: bool = False  
 
     ENVIRONMENT: str = "development"

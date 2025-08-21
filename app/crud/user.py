@@ -7,10 +7,10 @@ from app.models.user import User, UserRole
 from app.schema.user import UserCreate, UserInDB, UserOAuthCreate
 from app.core.hashing import get_password_hash, verify_password
 
-async def get_user(db: AsyncSession, user_id: uuid.UUID) -> Optional[UserInDB]:
+async def get_user(db: AsyncSession, user_id: uuid.UUID) -> Optional[User]:
     result = await db.execute(select(User).filter(User.id == user_id))
     user = result.scalars().first()
-    return UserInDB.from_orm(user) if user else None
+    return user 
 
 async def get_user_by_email(db: AsyncSession, email: str) -> Optional[UserInDB]:
     result = await db.execute(select(User).filter(User.email == email))

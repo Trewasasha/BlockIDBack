@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator:
     """Управление жизненным циклом приложения"""
-    # Инициализация Redis при старте
+
     try:
         redis_client = redis.from_url(str(settings.REDIS_URI))
         FastAPICache.init(RedisBackend(redis_client), prefix="fastapi-cache")
@@ -32,7 +32,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator:
         logger.error(f"Failed to initialize Redis: {str(e)}")
         raise
     
-    # Инициализация FileStorage (создание bucket если нужно)
+
     try:
         # Импортируем и инициализируем FileStorage
         from app.services.file_storage import file_storage

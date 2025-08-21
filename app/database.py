@@ -7,9 +7,9 @@ from app.core.config import settings
 
 Base = declarative_base()
 
-# Убедитесь, что settings.SQLALCHEMY_DATABASE_URI - строка
+
 engine = create_async_engine(
-    str(settings.SQLALCHEMY_DATABASE_URI),  # Явное преобразование в строку
+    str(settings.SQLALCHEMY_DATABASE_URI),  
     echo=True,
     future=True,
     poolclass=NullPool

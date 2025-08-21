@@ -18,7 +18,7 @@ async def read_user(
     db: AsyncSession = Depends(get_db),
     current_user: UserInDB = Depends(get_current_active_user),
 ):
-    # Пользователи могут видеть только свои данные, админы - любые
+
     if current_user.id != user_id and current_user.role != UserRole.ADMIN:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -59,14 +59,16 @@ async def update_user_role(
     """
     Обновить данные пользователя (только для админов)
     """
-    user = await get_user(db, user_id=user_id)
+    result = await db.execute(select(User).filter(User.id == user_id))
+    user = result.scalars().first()
+    
     if user is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="User not found",
         )
     
-    # Обновляем поля
+
     if user_update.email:
         user.email = user_update.email
     if user_update.role:

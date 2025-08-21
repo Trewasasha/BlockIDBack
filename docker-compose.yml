@@ -24,10 +24,8 @@ services:
       - MINIO_ACCESS_KEY=minioadmin
       - MINIO_SECRET_KEY=minioadmin
       - MINIO_BUCKET_NAME=kitchen-blocks
-    command: >
-      sh -c "sleep 5 && 
-      alembic upgrade head && 
-      uvicorn app.main:app --host 0.0.0.0 --port 8000"
+      - MINIO_PUBLIC_URL=http://185.135.80.107:9000
+      - MINIO_SECURE=false
 
   postgres:
     image: postgres:13-alpine
@@ -64,14 +62,15 @@ services:
     environment:
       MINIO_ROOT_USER: minioadmin
       MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_BROWSER: "on"
     volumes:
       - minio_data:/data
     command: server /data --console-address ":9001"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-      interval: 30s
-      timeout: 20s
-      retries: 3
+      test: ["CMD", "curl", "-f", "http://185.135.80.107:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
 volumes:
   postgres_data:
