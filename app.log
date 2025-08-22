@@ -3460,3 +3460,596 @@ FROM products
 2025-08-21 20:23:33,388 - sqlalchemy.engine.Engine - INFO - [cached since 20.76s ago] (100, 0)
 2025-08-21 20:23:33,395 - sqlalchemy.engine.Engine - INFO - ROLLBACK
 2025-08-21 21:03:44,125 - app.main - INFO - Application shutdown complete
+2025-08-21 23:14:46,193 - app.main - INFO - Redis cache initialized successfully
+2025-08-21 23:14:46,194 - app.main - INFO - FileStorage initialized successfully
+2025-08-21 23:18:44,033 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-08-21 23:18:44,034 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-08-21 23:18:44,042 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-08-21 23:18:44,043 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-08-21 23:18:44,050 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-08-21 23:18:44,051 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-08-21 23:18:44,055 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:44,093 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:44,094 - sqlalchemy.engine.Engine - INFO - [generated in 0.00160s] ('test@gmail.com',)
+2025-08-21 23:18:46,149 - sqlalchemy.engine.Engine - INFO - INSERT INTO users (id, email, hashed_password, is_active, role, updated_at, avatar, vk_id, google_id) VALUES ($1::UUID, $2::VARCHAR, $3::VARCHAR, $4::BOOLEAN, $5::userrole, $6::TIMESTAMP WITH TIME ZONE, $7::VARCHAR, $8::VARCHAR, $9::VARCHAR) RETURNING users.created_at
+2025-08-21 23:18:46,152 - sqlalchemy.engine.Engine - INFO - [generated in 0.00364s] (UUID('f2265059-b73a-444b-96f3-c8449f79b1fb'), 'test@gmail.com', '$2b$12$pcjiczclwQHIOoElNSQevuAJ4miDLHPruXQpp6n8VDBrfPxMhZeMe', True, 'USER', None, None, None, None)
+2025-08-21 23:18:46,171 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-08-21 23:18:46,239 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:46,244 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.id = $1::UUID
+2025-08-21 23:18:46,245 - sqlalchemy.engine.Engine - INFO - [generated in 0.00099s] (UUID('f2265059-b73a-444b-96f3-c8449f79b1fb'),)
+2025-08-21 23:18:47,005 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:47,128 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:47,130 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:47,131 - sqlalchemy.engine.Engine - INFO - [cached since 3.039s ago] ('test@gmail.com',)
+2025-08-21 23:18:47,749 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:48,029 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:48,031 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:48,032 - sqlalchemy.engine.Engine - INFO - [cached since 3.94s ago] ('test@gmail.com',)
+2025-08-21 23:18:48,684 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:48,805 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:48,808 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:48,809 - sqlalchemy.engine.Engine - INFO - [cached since 4.716s ago] ('test@gmail.com',)
+2025-08-21 23:18:49,225 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:49,280 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:49,281 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:49,282 - sqlalchemy.engine.Engine - INFO - [cached since 5.19s ago] ('test@gmail.com',)
+2025-08-21 23:18:49,729 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:49,821 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:49,824 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:49,826 - sqlalchemy.engine.Engine - INFO - [cached since 5.734s ago] ('test@gmail.com',)
+2025-08-21 23:18:49,871 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:49,873 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:49,874 - sqlalchemy.engine.Engine - INFO - [cached since 5.782s ago] ('test@gmail.com',)
+2025-08-21 23:18:50,371 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:50,400 - sqlalchemy.engine.Engine - INFO - SELECT cart_items.id, cart_items.user_id, cart_items.product_id, cart_items.quantity 
+FROM cart_items 
+WHERE cart_items.user_id = $1::UUID
+2025-08-21 23:18:50,401 - sqlalchemy.engine.Engine - INFO - [generated in 0.00088s] (UUID('f2265059-b73a-444b-96f3-c8449f79b1fb'),)
+2025-08-21 23:18:50,412 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:50,454 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:50,458 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:50,461 - sqlalchemy.engine.Engine - INFO - [cached since 6.368s ago] ('test@gmail.com',)
+2025-08-21 23:18:50,523 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:50,525 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:50,528 - sqlalchemy.engine.Engine - INFO - [cached since 6.435s ago] ('test@gmail.com',)
+2025-08-21 23:18:51,074 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:51,172 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:51,173 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:51,174 - sqlalchemy.engine.Engine - INFO - [cached since 7.081s ago] ('test@gmail.com',)
+2025-08-21 23:18:51,216 - sqlalchemy.engine.Engine - INFO - SELECT sum(cart_items.quantity) AS sum_1 
+FROM cart_items 
+WHERE cart_items.user_id = $1::UUID
+2025-08-21 23:18:51,218 - sqlalchemy.engine.Engine - INFO - [generated in 0.00189s] (UUID('f2265059-b73a-444b-96f3-c8449f79b1fb'),)
+2025-08-21 23:18:51,233 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:51,644 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:51,704 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:51,705 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:51,709 - sqlalchemy.engine.Engine - INFO - [cached since 7.617s ago] ('test@gmail.com',)
+2025-08-21 23:18:52,147 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:18:52,209 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:18:52,210 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:18:52,210 - sqlalchemy.engine.Engine - INFO - [cached since 8.118s ago] ('test@gmail.com',)
+2025-08-21 23:18:52,607 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:19:48,068 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:19:48,070 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:19:48,073 - sqlalchemy.engine.Engine - INFO - [cached since 63.98s ago] ('admin@gmail.com',)
+2025-08-21 23:19:48,572 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:13,610 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:13,612 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:13,614 - sqlalchemy.engine.Engine - INFO - [cached since 89.52s ago] ('admin@gmail.com',)
+2025-08-21 23:20:14,142 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:35,638 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:35,654 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-21 23:20:35,655 - sqlalchemy.engine.Engine - INFO - [generated in 0.00187s] (100, 0)
+2025-08-21 23:20:35,671 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:35,719 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:35,720 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-21 23:20:35,721 - sqlalchemy.engine.Engine - INFO - [cached since 0.06799s ago] (100, 0)
+2025-08-21 23:20:35,732 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:43,045 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:43,048 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:43,066 - sqlalchemy.engine.Engine - INFO - [cached since 119s ago] ('admin@gmail.com',)
+2025-08-21 23:20:44,095 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:44,189 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:44,192 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:44,192 - sqlalchemy.engine.Engine - INFO - [cached since 120.1s ago] ('admin@gmail.com',)
+2025-08-21 23:20:44,790 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:44,960 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:44,961 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:44,963 - sqlalchemy.engine.Engine - INFO - [cached since 120.9s ago] ('admin@gmail.com',)
+2025-08-21 23:20:45,378 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:45,450 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:45,452 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:45,453 - sqlalchemy.engine.Engine - INFO - [cached since 121.4s ago] ('admin@gmail.com',)
+2025-08-21 23:20:45,861 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:45,928 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:45,930 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:45,931 - sqlalchemy.engine.Engine - INFO - [cached since 121.8s ago] ('admin@gmail.com',)
+2025-08-21 23:20:46,409 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:46,473 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:46,475 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:46,481 - sqlalchemy.engine.Engine - INFO - [cached since 122.4s ago] ('admin@gmail.com',)
+2025-08-21 23:20:46,492 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:46,494 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:46,494 - sqlalchemy.engine.Engine - INFO - [cached since 122.4s ago] ('admin@gmail.com',)
+2025-08-21 23:20:47,092 - sqlalchemy.engine.Engine - INFO - SELECT cart_items.id, cart_items.user_id, cart_items.product_id, cart_items.quantity 
+FROM cart_items 
+WHERE cart_items.user_id = $1::UUID
+2025-08-21 23:20:47,093 - sqlalchemy.engine.Engine - INFO - [cached since 116.7s ago] (UUID('78ef217a-b24b-44f2-a253-4bb09722d6f8'),)
+2025-08-21 23:20:47,105 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:47,115 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:47,214 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:47,216 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:47,217 - sqlalchemy.engine.Engine - INFO - [cached since 123.1s ago] ('admin@gmail.com',)
+2025-08-21 23:20:47,218 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:47,220 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:47,220 - sqlalchemy.engine.Engine - INFO - [cached since 123.1s ago] ('admin@gmail.com',)
+2025-08-21 23:20:47,866 - sqlalchemy.engine.Engine - INFO - SELECT sum(cart_items.quantity) AS sum_1 
+FROM cart_items 
+WHERE cart_items.user_id = $1::UUID
+2025-08-21 23:20:47,867 - sqlalchemy.engine.Engine - INFO - [cached since 116.7s ago] (UUID('78ef217a-b24b-44f2-a253-4bb09722d6f8'),)
+2025-08-21 23:20:47,872 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:47,893 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:47,953 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:47,955 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:47,955 - sqlalchemy.engine.Engine - INFO - [cached since 123.9s ago] ('admin@gmail.com',)
+2025-08-21 23:20:48,434 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:48,494 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:48,496 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:48,498 - sqlalchemy.engine.Engine - INFO - [cached since 124.4s ago] ('admin@gmail.com',)
+2025-08-21 23:20:48,898 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:48,960 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:48,961 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:48,962 - sqlalchemy.engine.Engine - INFO - [cached since 124.9s ago] ('admin@gmail.com',)
+2025-08-21 23:20:49,365 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:49,415 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:49,416 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:49,417 - sqlalchemy.engine.Engine - INFO - [cached since 125.3s ago] ('admin@gmail.com',)
+2025-08-21 23:20:49,806 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:49,865 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:49,867 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:49,868 - sqlalchemy.engine.Engine - INFO - [cached since 125.8s ago] ('admin@gmail.com',)
+2025-08-21 23:20:50,275 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:50,335 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:50,337 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:50,337 - sqlalchemy.engine.Engine - INFO - [cached since 126.2s ago] ('admin@gmail.com',)
+2025-08-21 23:20:50,729 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:50,784 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:50,785 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:50,786 - sqlalchemy.engine.Engine - INFO - [cached since 126.7s ago] ('admin@gmail.com',)
+2025-08-21 23:20:51,231 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:51,324 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:51,325 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:51,327 - sqlalchemy.engine.Engine - INFO - [cached since 127.2s ago] ('admin@gmail.com',)
+2025-08-21 23:20:51,757 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:51,826 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:51,837 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:51,837 - sqlalchemy.engine.Engine - INFO - [cached since 127.7s ago] ('admin@gmail.com',)
+2025-08-21 23:20:51,920 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:51,921 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:51,923 - sqlalchemy.engine.Engine - INFO - [cached since 127.8s ago] ('admin@gmail.com',)
+2025-08-21 23:20:52,384 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:52,486 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-21 23:20:52,487 - sqlalchemy.engine.Engine - INFO - [cached since 16.83s ago] (100, 0)
+2025-08-21 23:20:52,495 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:20:52,557 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:20:52,559 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:20:52,559 - sqlalchemy.engine.Engine - INFO - [cached since 128.5s ago] ('admin@gmail.com',)
+2025-08-21 23:20:52,974 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-21 23:20:52,975 - sqlalchemy.engine.Engine - INFO - [cached since 17.32s ago] (100, 0)
+2025-08-21 23:20:52,984 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:17,164 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:17,165 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:21:17,166 - sqlalchemy.engine.Engine - INFO - [cached since 153.1s ago] ('admin@gmail.com',)
+2025-08-21 23:21:17,769 - sqlalchemy.engine.Engine - INFO - INSERT INTO products (id, name, description, price, stock, is_active, category, image_object_name, updated_at, sku, weight, dimensions) VALUES ($1::UUID, $2::VARCHAR, $3::VARCHAR, $4::FLOAT, $5::INTEGER, $6::BOOLEAN, $7::VARCHAR, $8::VARCHAR, $9::TIMESTAMP WITH TIME ZONE, $10::VARCHAR, $11::FLOAT, $12::VARCHAR) RETURNING products.created_at
+2025-08-21 23:21:17,770 - sqlalchemy.engine.Engine - INFO - [generated in 0.00162s] (UUID('d7e45782-fad5-44da-af28-5c78559277ed'), 'ERDTFYGHJ', 'ASDFGHJK', 1234567.0, 345, True, 'SDFGHJK', None, None, '1234567', 23456.0, '10x20x30')
+2025-08-21 23:21:17,778 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-08-21 23:21:17,826 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:17,829 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+WHERE products.id = $1::UUID
+2025-08-21 23:21:17,830 - sqlalchemy.engine.Engine - INFO - [generated in 0.00133s] (UUID('d7e45782-fad5-44da-af28-5c78559277ed'),)
+2025-08-21 23:21:17,870 - app.services.file_storage - INFO - Image uploaded successfully: products/d7e45782-fad5-44da-af28-5c78559277ed.jpg
+2025-08-21 23:21:17,877 - sqlalchemy.engine.Engine - INFO - UPDATE products SET image_object_name=$1::VARCHAR, updated_at=$2::TIMESTAMP WITH TIME ZONE WHERE products.id = $3::UUID
+2025-08-21 23:21:17,878 - sqlalchemy.engine.Engine - INFO - [generated in 0.00176s] ('products/d7e45782-fad5-44da-af28-5c78559277ed.jpg', datetime.datetime(2025, 8, 21, 23, 21, 17, 871643), UUID('d7e45782-fad5-44da-af28-5c78559277ed'))
+2025-08-21 23:21:17,887 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-08-21 23:21:17,920 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:17,921 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+WHERE products.id = $1::UUID
+2025-08-21 23:21:17,921 - sqlalchemy.engine.Engine - INFO - [cached since 0.09256s ago] (UUID('d7e45782-fad5-44da-af28-5c78559277ed'),)
+2025-08-21 23:21:17,935 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:19,261 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:19,266 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:21:19,268 - sqlalchemy.engine.Engine - INFO - [cached since 155.2s ago] ('admin@gmail.com',)
+2025-08-21 23:21:19,856 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-21 23:21:19,856 - sqlalchemy.engine.Engine - INFO - [cached since 44.2s ago] (100, 0)
+2025-08-21 23:21:19,864 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:20,288 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:20,291 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:21:20,293 - sqlalchemy.engine.Engine - INFO - [cached since 156.2s ago] ('admin@gmail.com',)
+2025-08-21 23:21:20,379 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:20,380 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-21 23:21:20,381 - sqlalchemy.engine.Engine - INFO - [cached since 44.73s ago] (12, 0)
+2025-08-21 23:21:20,394 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:20,479 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:20,480 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-21 23:21:20,482 - sqlalchemy.engine.Engine - INFO - [cached since 44.83s ago] (12, 0)
+2025-08-21 23:21:20,499 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:21,092 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:21,180 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:21,182 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:21:21,184 - sqlalchemy.engine.Engine - INFO - [cached since 157.1s ago] ('admin@gmail.com',)
+2025-08-21 23:21:21,774 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:21,830 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:21,832 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:21:21,833 - sqlalchemy.engine.Engine - INFO - [cached since 157.7s ago] ('admin@gmail.com',)
+2025-08-21 23:21:22,478 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:22,551 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:22,552 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:21:22,553 - sqlalchemy.engine.Engine - INFO - [cached since 158.5s ago] ('admin@gmail.com',)
+2025-08-21 23:21:23,044 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:25,440 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:25,444 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+WHERE products.id = $1::UUID
+2025-08-21 23:21:25,445 - sqlalchemy.engine.Engine - INFO - [generated in 0.00151s] (UUID('d7e45782-fad5-44da-af28-5c78559277ed'),)
+2025-08-21 23:21:25,459 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:30,121 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:30,123 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:21:30,124 - sqlalchemy.engine.Engine - INFO - [cached since 166s ago] ('admin@gmail.com',)
+2025-08-21 23:21:30,148 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:30,149 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-21 23:21:30,150 - sqlalchemy.engine.Engine - INFO - [cached since 54.5s ago] (100, 0)
+2025-08-21 23:21:30,163 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:30,259 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:30,261 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-21 23:21:30,262 - sqlalchemy.engine.Engine - INFO - [cached since 54.61s ago] (100, 0)
+2025-08-21 23:21:30,303 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:30,864 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:30,947 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:30,949 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:21:30,950 - sqlalchemy.engine.Engine - INFO - [cached since 166.9s ago] ('admin@gmail.com',)
+2025-08-21 23:21:31,494 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:31,551 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:31,552 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:21:31,557 - sqlalchemy.engine.Engine - INFO - [cached since 167.5s ago] ('admin@gmail.com',)
+2025-08-21 23:21:32,002 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:21:32,062 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-21 23:21:32,063 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-21 23:21:32,065 - sqlalchemy.engine.Engine - INFO - [cached since 168s ago] ('admin@gmail.com',)
+2025-08-21 23:21:32,615 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-21 23:23:15,372 - app.main - INFO - Application shutdown complete
+2025-08-22 12:59:02,307 - app.main - INFO - Redis cache initialized successfully
+2025-08-22 12:59:02,311 - app.main - INFO - FileStorage initialized successfully
+2025-08-22 12:59:18,937 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-08-22 12:59:18,940 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-08-22 12:59:18,953 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-08-22 12:59:18,955 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-08-22 12:59:18,966 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-08-22 12:59:18,968 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-08-22 12:59:18,975 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:19,011 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:19,012 - sqlalchemy.engine.Engine - INFO - [generated in 0.00199s] ('admin@gmail.com',)
+2025-08-22 12:59:21,369 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:21,489 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:21,493 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:21,498 - sqlalchemy.engine.Engine - INFO - [cached since 2.488s ago] ('admin@gmail.com',)
+2025-08-22 12:59:22,174 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:22,414 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:22,416 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:22,419 - sqlalchemy.engine.Engine - INFO - [cached since 3.409s ago] ('admin@gmail.com',)
+2025-08-22 12:59:23,048 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:23,112 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:23,115 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:23,117 - sqlalchemy.engine.Engine - INFO - [cached since 4.106s ago] ('admin@gmail.com',)
+2025-08-22 12:59:23,608 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:23,666 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:23,667 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:23,669 - sqlalchemy.engine.Engine - INFO - [cached since 4.659s ago] ('admin@gmail.com',)
+2025-08-22 12:59:24,262 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:24,330 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:24,331 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:24,332 - sqlalchemy.engine.Engine - INFO - [cached since 5.322s ago] ('admin@gmail.com',)
+2025-08-22 12:59:24,378 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:24,380 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:24,382 - sqlalchemy.engine.Engine - INFO - [cached since 5.372s ago] ('admin@gmail.com',)
+2025-08-22 12:59:24,850 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:24,894 - sqlalchemy.engine.Engine - INFO - SELECT cart_items.id, cart_items.user_id, cart_items.product_id, cart_items.quantity 
+FROM cart_items 
+WHERE cart_items.user_id = $1::UUID
+2025-08-22 12:59:24,895 - sqlalchemy.engine.Engine - INFO - [generated in 0.00142s] (UUID('78ef217a-b24b-44f2-a253-4bb09722d6f8'),)
+2025-08-22 12:59:24,909 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:24,971 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:24,974 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:24,976 - sqlalchemy.engine.Engine - INFO - [cached since 5.966s ago] ('admin@gmail.com',)
+2025-08-22 12:59:25,030 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:25,032 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:25,034 - sqlalchemy.engine.Engine - INFO - [cached since 6.023s ago] ('admin@gmail.com',)
+2025-08-22 12:59:25,511 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:25,538 - sqlalchemy.engine.Engine - INFO - SELECT sum(cart_items.quantity) AS sum_1 
+FROM cart_items 
+WHERE cart_items.user_id = $1::UUID
+2025-08-22 12:59:25,539 - sqlalchemy.engine.Engine - INFO - [generated in 0.00087s] (UUID('78ef217a-b24b-44f2-a253-4bb09722d6f8'),)
+2025-08-22 12:59:25,552 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:25,580 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:25,582 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:25,583 - sqlalchemy.engine.Engine - INFO - [cached since 6.573s ago] ('admin@gmail.com',)
+2025-08-22 12:59:25,984 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:26,044 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:26,046 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:26,046 - sqlalchemy.engine.Engine - INFO - [cached since 7.036s ago] ('admin@gmail.com',)
+2025-08-22 12:59:26,460 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:26,514 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:26,516 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:26,517 - sqlalchemy.engine.Engine - INFO - [cached since 7.506s ago] ('admin@gmail.com',)
+2025-08-22 12:59:26,976 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:27,873 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:27,874 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:27,876 - sqlalchemy.engine.Engine - INFO - [cached since 8.866s ago] ('admin@gmail.com',)
+2025-08-22 12:59:28,287 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:28,343 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:28,345 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:28,346 - sqlalchemy.engine.Engine - INFO - [cached since 9.336s ago] ('admin@gmail.com',)
+2025-08-22 12:59:28,813 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:28,886 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:28,888 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:28,888 - sqlalchemy.engine.Engine - INFO - [cached since 9.878s ago] ('admin@gmail.com',)
+2025-08-22 12:59:29,525 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:29,587 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:29,589 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:29,590 - sqlalchemy.engine.Engine - INFO - [cached since 10.58s ago] ('admin@gmail.com',)
+2025-08-22 12:59:30,038 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:30,100 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:30,102 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:30,102 - sqlalchemy.engine.Engine - INFO - [cached since 11.09s ago] ('admin@gmail.com',)
+2025-08-22 12:59:30,519 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:30,586 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:30,588 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:30,589 - sqlalchemy.engine.Engine - INFO - [cached since 11.58s ago] ('admin@gmail.com',)
+2025-08-22 12:59:30,616 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:30,618 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:30,618 - sqlalchemy.engine.Engine - INFO - [cached since 11.61s ago] ('admin@gmail.com',)
+2025-08-22 12:59:31,075 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:31,103 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-22 12:59:31,105 - sqlalchemy.engine.Engine - INFO - [generated in 0.00148s] (100, 0)
+2025-08-22 12:59:31,115 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 12:59:31,173 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 12:59:31,176 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 12:59:31,177 - sqlalchemy.engine.Engine - INFO - [cached since 12.17s ago] ('admin@gmail.com',)
+2025-08-22 12:59:31,600 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-22 12:59:31,601 - sqlalchemy.engine.Engine - INFO - [cached since 0.4978s ago] (100, 0)
+2025-08-22 12:59:31,608 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 13:00:11,842 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:11,844 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 13:00:11,845 - sqlalchemy.engine.Engine - INFO - [cached since 52.83s ago] ('admin@gmail.com',)
+2025-08-22 13:00:12,326 - sqlalchemy.engine.Engine - INFO - INSERT INTO products (id, name, description, price, stock, is_active, category, image_object_name, updated_at, sku, weight, dimensions) VALUES ($1::UUID, $2::VARCHAR, $3::VARCHAR, $4::FLOAT, $5::INTEGER, $6::BOOLEAN, $7::VARCHAR, $8::VARCHAR, $9::TIMESTAMP WITH TIME ZONE, $10::VARCHAR, $11::FLOAT, $12::VARCHAR) RETURNING products.created_at
+2025-08-22 13:00:12,327 - sqlalchemy.engine.Engine - INFO - [generated in 0.00142s] (UUID('70731878-959e-4fa7-bb74-952061c176c3'), 'Стол', 'Описание', 1245.0, 23, True, 'Кухни', None, None, '12345678', 23456.0, '10x20x30')
+2025-08-22 13:00:12,336 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-08-22 13:00:12,401 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:12,406 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+WHERE products.id = $1::UUID
+2025-08-22 13:00:12,407 - sqlalchemy.engine.Engine - INFO - [generated in 0.00108s] (UUID('70731878-959e-4fa7-bb74-952061c176c3'),)
+2025-08-22 13:00:12,442 - app.services.file_storage - INFO - Image uploaded successfully: products/70731878-959e-4fa7-bb74-952061c176c3.jpg
+2025-08-22 13:00:12,447 - sqlalchemy.engine.Engine - INFO - UPDATE products SET image_object_name=$1::VARCHAR, updated_at=$2::TIMESTAMP WITH TIME ZONE WHERE products.id = $3::UUID
+2025-08-22 13:00:12,448 - sqlalchemy.engine.Engine - INFO - [generated in 0.00128s] ('products/70731878-959e-4fa7-bb74-952061c176c3.jpg', datetime.datetime(2025, 8, 22, 13, 0, 12, 443840), UUID('70731878-959e-4fa7-bb74-952061c176c3'))
+2025-08-22 13:00:12,455 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-08-22 13:00:12,489 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:12,490 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+WHERE products.id = $1::UUID
+2025-08-22 13:00:12,491 - sqlalchemy.engine.Engine - INFO - [cached since 0.08526s ago] (UUID('70731878-959e-4fa7-bb74-952061c176c3'),)
+2025-08-22 13:00:12,503 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 13:00:14,144 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:14,148 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 13:00:14,166 - sqlalchemy.engine.Engine - INFO - [cached since 55.16s ago] ('admin@gmail.com',)
+2025-08-22 13:00:14,747 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-22 13:00:14,748 - sqlalchemy.engine.Engine - INFO - [cached since 43.64s ago] (100, 0)
+2025-08-22 13:00:14,757 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 13:00:15,635 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:15,636 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 13:00:15,638 - sqlalchemy.engine.Engine - INFO - [cached since 56.63s ago] ('admin@gmail.com',)
+2025-08-22 13:00:15,706 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:15,708 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-22 13:00:15,709 - sqlalchemy.engine.Engine - INFO - [cached since 44.61s ago] (100, 0)
+2025-08-22 13:00:15,721 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 13:00:15,864 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:15,866 - sqlalchemy.engine.Engine - INFO - SELECT products.id, products.name, products.description, products.price, products.stock, products.is_active, products.category, products.image_object_name, products.created_at, products.updated_at, products.sku, products.weight, products.dimensions 
+FROM products 
+ LIMIT $1::INTEGER OFFSET $2::INTEGER
+2025-08-22 13:00:15,867 - sqlalchemy.engine.Engine - INFO - [cached since 44.76s ago] (100, 0)
+2025-08-22 13:00:15,880 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 13:00:16,418 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 13:00:16,548 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:16,552 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 13:00:16,556 - sqlalchemy.engine.Engine - INFO - [cached since 57.55s ago] ('admin@gmail.com',)
+2025-08-22 13:00:17,234 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 13:00:17,309 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:17,310 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 13:00:17,312 - sqlalchemy.engine.Engine - INFO - [cached since 58.3s ago] ('admin@gmail.com',)
+2025-08-22 13:00:17,942 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 13:00:18,004 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:18,006 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 13:00:18,006 - sqlalchemy.engine.Engine - INFO - [cached since 59s ago] ('admin@gmail.com',)
+2025-08-22 13:00:18,474 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 13:00:18,527 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:18,529 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 13:00:18,529 - sqlalchemy.engine.Engine - INFO - [cached since 59.52s ago] ('admin@gmail.com',)
+2025-08-22 13:00:19,085 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-08-22 13:00:19,150 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-22 13:00:19,151 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.email, users.hashed_password, users.is_active, users.role, users.created_at, users.updated_at, users.avatar, users.vk_id, users.google_id 
+FROM users 
+WHERE users.email = $1::VARCHAR
+2025-08-22 13:00:19,152 - sqlalchemy.engine.Engine - INFO - [cached since 60.14s ago] ('admin@gmail.com',)
+2025-08-22 13:00:19,549 - sqlalchemy.engine.Engine - INFO - ROLLBACK

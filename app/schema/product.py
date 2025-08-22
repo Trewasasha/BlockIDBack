@@ -33,7 +33,7 @@ class ProductInDB(ProductBase):
     id: UUID  
     is_active: bool
     created_at: datetime
-    updated_at: datetime
+    updated_at: Optional[datetime] = None
     image_url: Optional[str] = None 
 
     class Config:
